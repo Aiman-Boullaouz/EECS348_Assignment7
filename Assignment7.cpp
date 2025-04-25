@@ -1,6 +1,6 @@
 // EECS 348 Assignment 7
 // Author: Aiman Boullaouz
-// Description: Connects to SQL database then 
+// Description: Connects to SQL database then runs queries and outputs results
 // Inputs: Needs prebuilt SQL tables to search
 // Output: SQL query results printed to console
 // Created: 4/24/2025
