@@ -61,7 +61,7 @@ int main() {
 
         // Query 2: Students in more than 2 courses
         cout << "\n2. Students enrolled in more than 2 courses:\n";
-        runQuery(stmt, "SELECT StdNo FROM Enrollment GROUP BY StdNo HAVING COUNT(*) > 2");
+        runQuery(stmt, "SELECT S.StdFirstName, S.StdLastName FROM Student S JOIN (SELECT StdNo FROM Enrollment GROUP BY StdNo HAVING COUNT(*) > 2) AS E ON S.StdNo = E.StdNo");
 
         // Query 3: Physics professors with > 5 years experience
         cout << "\n3. Professors in Physics with > 5 years:\n";
@@ -101,7 +101,7 @@ int main() {
         // Verify insertion
         runQuery(stmt, "SELECT * FROM Student WHERE StdNo = '888-88-8888'");
 
-        // Query 12: Update existing student record
+        // Query 12: Update existing student record (shouldn't we also update the state to Kansas?)
         cout << "\n12. Update Bob Norbert city/zip:\n";
         stmt->execute("UPDATE Student SET StdCity = 'Overland Park', StdZip = '66210' WHERE StdFirstName = 'Bob' AND StdLastName = 'Norbert'");
         // Verify update
